@@ -1,0 +1,47 @@
+query firstQuery{
+  __typename
+  tickets {
+    id
+    name
+    __typename
+    email
+    text
+    createdAt
+  }
+
+  ahmadTicket: ticket(id: "86e59fc6-c955-45cf-8ff1-abfd3b08a41f") {
+    name
+  }
+  testTicket: ticket(id: "52edbf48-0579-4718-ab82-922b36ed5b91") {
+    email
+  }
+  
+  __type(name: "Ticket") {
+    name
+    kind
+    fields {
+      name
+      
+      type {
+        kind
+        description
+        ofType{
+          name
+          kind
+        }
+      }
+    }
+  }
+}
+
+mutation create{
+  createTicket(ticket: {
+    name:"Test",
+    email: "test@test.com",
+    text: "text"
+  }){
+    id
+    name
+    createdAt
+  }
+}
